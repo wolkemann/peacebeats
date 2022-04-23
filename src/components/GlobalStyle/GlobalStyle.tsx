@@ -6,6 +6,10 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
 }
+:root {
+    --filmWindowBorderColor: crimson;
+}
+
 html {
     font-family: 'Bentham', serif;
     font-family: 'Source Sans Pro', sans-serif;
