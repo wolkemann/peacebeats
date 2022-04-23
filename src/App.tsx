@@ -17,7 +17,7 @@ function App() {
 
   player.connect(filter);
 
-  function handleChangeVolume(event) {
+  function handleChangeVolume(event: any) {
     const vol = new Tone.Volume(event.target.value).toDestination();
     player.volume.value = event.target.value;
   }
