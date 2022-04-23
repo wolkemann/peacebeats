@@ -13,9 +13,11 @@ function App() {
     url: "/drumbeat.wav",
     loop: true,
   }).chain();
-  const filter = new Tone.BiquadFilter(2000, "lowpass").toDestination();
+  /*const filter = new Tone.BiquadFilter(2000, "lowpass").toDestination();
 
-  player.connect(filter);
+  player.connect(filter);*/
+
+  player.toDestination();
 
   function handleChangeVolume(event: any) {
     const vol = new Tone.Volume(event.target.value).toDestination();

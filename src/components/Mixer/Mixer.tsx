@@ -4,7 +4,7 @@ import * as Tone from "tone";
 import { useContext } from "react";
 import { AudioContext } from "../../App";
 
-export default function Mixer({ song }) {
+export default function Mixer({ song }: any) {
   return (
     <MixerWrapper>
       <Slider id="filter1" labelName="Filter 1" />
