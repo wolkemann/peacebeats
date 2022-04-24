@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import Slider from "../Slider/Slider";
 import * as Tone from "tone";
-import { useContext } from "react";
-import { AudioContext } from "../../App";
 
-export default function Mixer({ song }: any) {
+export default function Mixer({ song, song2 }: any) {
   return (
     <MixerWrapper>
       <Slider id="filter1" labelName="Filter 1" />
@@ -12,6 +10,7 @@ export default function Mixer({ song }: any) {
       <button
         onClick={() => {
           song.start();
+          song2.start();
         }}
       >
         play
@@ -19,6 +18,7 @@ export default function Mixer({ song }: any) {
       <button
         onClick={() => {
           song.stop();
+          song2.stop();
         }}
       >
         stop
