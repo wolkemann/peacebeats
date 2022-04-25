@@ -2,38 +2,34 @@ import FilmWindow from "./components/FilmWindow/FilmWindow";
 import Mixer from "./components/Mixer/Mixer";
 import Octa from "./components/Octa/Octa";
 import * as Tone from "tone";
-import { createContext, useContext, useEffect, useState } from "react";
-
-export const AudioContext = createContext({});
 
 function App() {
-  const audio = useContext(AudioContext);
-
-  const player = new Tone.Player({
+  const drumMaschine = new Tone.Player({
     url: "/drumbeat.wav",
     loop: true,
-  }).chain();
-  const filter = new Tone.BiquadFilter(2000, "lowpass").toDestination();
+  });
 
-  player.connect(filter);
+  const melody = new Tone.Player({
+    url: "/melody.wav",
+    loop: true,
+  });
+
+  drumMaschine.volume.value -= 10;
+
+  drumMaschine.toDestination();
+  melody.toDestination();
 
   function handleChangeVolume(event: any) {
-    const vol = new Tone.Volume(event.target.value).toDestination();
-    player.volume.value = event.target.value;
+    drumMaschine.volume.value = event.target.value - 10;
+    melody.volume.value = event.target.value;
   }
-
-  useEffect(() => {
-    Tone.start();
-  }, []);
 
   return (
     <main>
-      <AudioContext.Provider value={{ volume: 1000 }}>
-        <FilmWindow onChangeVolume={handleChangeVolume}>
-          <Octa />
-        </FilmWindow>
-        <Mixer song={player} />
-      </AudioContext.Provider>
+      <FilmWindow onChangeVolume={handleChangeVolume}>
+        <Octa />
+      </FilmWindow>
+      <Mixer drumMaschine={drumMaschine} melody={melody} />
     </main>
   );
 }

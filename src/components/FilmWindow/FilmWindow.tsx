@@ -2,12 +2,9 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import styled from "styled-components";
 import Slider from "../Slider/Slider";
-import { AudioContext } from "../../App";
-import { useContext } from "react";
 
 // @ts-ignore
 export default function FilmWindow({ onChangeVolume, children }) {
-  const audio = useContext(AudioContext);
   return (
     <Wrapper>
       <Canvas>
