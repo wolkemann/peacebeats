@@ -1,7 +1,9 @@
-import FilmWindow from "./components/FilmWindow/FilmWindow";
+import * as Tone from "tone";
+import styled from "styled-components";
+
+import Window from "./components/Window/Window";
 import Mixer from "./components/Mixer/Mixer";
 import Octa from "./components/Octa/Octa";
-import * as Tone from "tone";
 
 function App() {
   const drumMaschine = new Tone.Player({
@@ -25,13 +27,27 @@ function App() {
   }
 
   return (
-    <main>
-      <FilmWindow onChangeVolume={handleChangeVolume}>
+    <FilmWindow>
+      <Window>
         <Octa />
-      </FilmWindow>
-      <Mixer drumMaschine={drumMaschine} melody={melody} />
-    </main>
+      </Window>
+      <Mixer
+        drumMaschine={drumMaschine}
+        melody={melody}
+        onChangeVolume={handleChangeVolume}
+      />
+    </FilmWindow>
   );
 }
+
+const FilmWindow = styled.section`
+  height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  border: 2px solid var(--filmWindowBorderColor);
+  background-color: black;
+`;
 
 export default App;

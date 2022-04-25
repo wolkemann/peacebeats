@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Slider from "../Slider/Slider";
 
 // @ts-ignore
-export default function FilmWindow({ onChangeVolume, children }) {
+export default function Window({ children }) {
   return (
     <Wrapper>
       <Canvas>
@@ -12,25 +12,10 @@ export default function FilmWindow({ onChangeVolume, children }) {
         <directionalLight color="blue" position={[30, 0, 5]} />
         {children}
       </Canvas>
-      <Slider
-        id="volume"
-        min={-60}
-        max={0}
-        defaultValue={0}
-        onChange={onChangeVolume}
-      />
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
-  display: flex;
-  flex-flow: column wrap;
-  gap: 2rem;
-  align-items: flex-start;
-  border: 2px solid var(--filmWindowBorderColor);
-  background-color: black;
-`;
-const WindowTitle = styled.legend`
-  text-align: center;
+  width: 100%;
 `;
