@@ -1,7 +1,7 @@
 import * as Tone from "tone";
 import styled from "styled-components";
-
-import Window from "./components/Window/Window";
+import Slider from "./components/Slider/Slider";
+import FilmWindow from "./components/FilmWindow/FilmWindow";
 import Mixer from "./components/Mixer/Mixer";
 import Octa from "./components/Octa/Octa";
 
@@ -27,27 +27,13 @@ function App() {
   }
 
   return (
-    <FilmWindow>
-      <Window>
+    <main>
+      <FilmWindow handleChangeVolume={handleChangeVolume}>
         <Octa />
-      </Window>
-      <Mixer
-        drumMaschine={drumMaschine}
-        melody={melody}
-        onChangeVolume={handleChangeVolume}
-      />
-    </FilmWindow>
+      </FilmWindow>
+      <Mixer drumMaschine={drumMaschine} melody={melody} />
+    </main>
   );
 }
-
-const FilmWindow = styled.section`
-  height: 100vh;
-  display: flex;
-  flex-flow: column wrap;
-  gap: 2rem;
-  justify-content: space-between;
-  border: 2px solid var(--filmWindowBorderColor);
-  background-color: black;
-`;
 
 export default App;

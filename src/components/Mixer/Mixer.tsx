@@ -1,39 +1,41 @@
 import styled from "styled-components";
-import Slider from "../Slider/Slider";
+import { Icon } from "@iconify/react";
+import { useState } from "react";
 
-export default function Mixer({ drumMaschine, melody, onChangeVolume }: any) {
+export default function Mixer({ drumMaschine, melody }: any) {
+  const [play, setPlay] = useState(false);
   return (
     <MixerWrapper>
-      <button
-        onClick={() => {
-          drumMaschine.start();
-          melody.start();
-        }}
-      >
-        play
-      </button>
-      <button
-        onClick={() => {
-          drumMaschine.stop();
-          melody.stop();
-        }}
-      >
-        stop
-      </button>
-      <Slider
-        id="volume"
-        min={-60}
-        max={0}
-        defaultValue={0}
-        onChange={onChangeVolume}
-      />
+      <div>Drum</div>
+      {play ? (
+        <Icon
+          icon="bx:stop-circle"
+          height={60}
+          onClick={() => {
+            drumMaschine.stop();
+            melody.stop();
+            setPlay(!play);
+          }}
+        />
+      ) : (
+        <Icon
+          icon="ci:play-circle-outline"
+          height={60}
+          onClick={() => {
+            drumMaschine.start();
+            melody.start();
+            setPlay(!play);
+          }}
+        />
+      )}
+
+      <div>Melody</div>
     </MixerWrapper>
   );
 }
 
 const MixerWrapper = styled.section`
-  width: 100%;
   display: flex;
   flex-flow: row wrap;
-  gap: 0.5rem;
+  justify-content: space-between;
 `;

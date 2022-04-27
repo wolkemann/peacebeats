@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Slider from "../Slider/Slider";
 
 // @ts-ignore
-export default function Window({ children }) {
+export default function Window({ children, handleChangeVolume }) {
   return (
     <Wrapper>
       <Canvas>
@@ -12,10 +12,22 @@ export default function Window({ children }) {
         <directionalLight color="blue" position={[30, 0, 5]} />
         {children}
       </Canvas>
+      <Slider
+        id="volume"
+        min={-60}
+        max={0}
+        defaultValue={0}
+        onChange={handleChangeVolume}
+      />
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
-  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  border: 2px solid var(--filmWindowBorderColor);
+  background-color: black;
 `;
