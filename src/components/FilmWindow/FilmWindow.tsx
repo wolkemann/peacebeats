@@ -7,27 +7,24 @@ import Slider from "../Slider/Slider";
 export default function Window({ children, handleChangeVolume }) {
   return (
     <Wrapper>
-      <Canvas>
-        <ambientLight intensity={0.1} />
-        <directionalLight color="blue" position={[30, 0, 5]} />
-        {children}
-      </Canvas>
-      <Slider
-        id="volume"
-        min={-60}
-        max={0}
-        defaultValue={0}
-        onChange={handleChangeVolume}
-      />
+      <SceneTitle>FILMWINDOW</SceneTitle>
+      <div>
+        <Canvas>
+          <ambientLight intensity={0.1} />
+          <directionalLight color="blue" position={[30, 0, 5]} />
+          {children}
+        </Canvas>
+      </div>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
-  display: flex;
-  flex-flow: column wrap;
-  gap: 2rem;
-  justify-content: space-between;
+  flex-grow: 3;
   border: 2px solid var(--filmWindowBorderColor);
   background-color: black;
+`;
+
+const SceneTitle = styled.h2`
+  color: crimson;
 `;

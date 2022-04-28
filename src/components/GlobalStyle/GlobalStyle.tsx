@@ -17,9 +17,18 @@ html {
 
 body {
     background-color: beige;
+    
+}
+
+#root {
+
 }
 
 main {
-    margin: 0.5rem;
+    height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    padding: 0.5rem;
 }
 `;
