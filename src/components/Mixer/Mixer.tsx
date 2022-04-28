@@ -7,28 +7,20 @@ export default function Mixer({ drumMaschine, melody }: any) {
   return (
     <MixerWrapper>
       <div>Drum</div>
-      {play ? (
-        <Icon
-          icon="bx:stop-circle"
-          height={60}
-          onClick={() => {
+      <Icon
+        icon={play ? "bx:stop-circle" : "ci:play-circle-outline"}
+        height={60}
+        onClick={() => {
+          if (play) {
             drumMaschine.stop();
             melody.stop();
-            setPlay(!play);
-          }}
-        />
-      ) : (
-        <Icon
-          icon="ci:play-circle-outline"
-          height={60}
-          onClick={() => {
+          } else {
             drumMaschine.start();
             melody.start();
-            setPlay(!play);
-          }}
-        />
-      )}
-
+          }
+          setPlay(!play);
+        }}
+      />
       <div>Melody</div>
     </MixerWrapper>
   );
