@@ -43,7 +43,7 @@ const InputRange = styled.input`
   position: relative;
   overflow: hidden;
   height: 11px;
-  width: 100%;
+
   cursor: pointer;
   border-radius: 0; /* iOS */
 
