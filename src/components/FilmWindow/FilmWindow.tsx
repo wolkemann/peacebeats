@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Slider from "../Slider/Slider";
 
 // @ts-ignore
-export default function Window({ children, handleChangeVolume }) {
+export default function Window({ children }) {
   return (
     <Wrapper>
       <SceneTitle>FILMWINDOW</SceneTitle>
