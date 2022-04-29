@@ -1,9 +1,8 @@
 import * as Tone from "tone";
 import styled from "styled-components";
-import Slider from "./components/Slider/Slider";
-import FilmWindow from "./components/FilmWindow/FilmWindow";
+import Window from "./components/Window/Window";
 import Mixer from "./components/Mixer/Mixer";
-import Octa from "./components/Octa/Octa";
+import FilmWindow from "./components/Scenes/FilmWindow/FilmWindow";
 
 function App() {
   const drumMaschine = new Tone.Player({
@@ -28,9 +27,9 @@ function App() {
 
   return (
     <main>
-      <FilmWindow>
-        <Octa />
-      </FilmWindow>
+      <Window>
+        <FilmWindow />
+      </Window>
       <Mixer
         drumMaschine={drumMaschine}
         melody={melody}
