@@ -28,10 +28,14 @@ function App() {
 
   return (
     <main>
-      <FilmWindow handleChangeVolume={handleChangeVolume}>
+      <FilmWindow>
         <Octa />
       </FilmWindow>
-      <Mixer drumMaschine={drumMaschine} melody={melody} />
+      <Mixer
+        drumMaschine={drumMaschine}
+        melody={melody}
+        handleChangeVolume={handleChangeVolume}
+      />
     </main>
   );
 }
