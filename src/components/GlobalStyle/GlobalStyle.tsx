@@ -27,7 +27,7 @@ body {
 main {
     height: 100vh;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     justify-content: space-between;
     padding: 0.5rem;
 }

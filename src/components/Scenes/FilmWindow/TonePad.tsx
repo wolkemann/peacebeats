@@ -9,17 +9,20 @@ export default function TonePad(props: any) {
   const myMesh: any = useRef();
   return (
     <motion.mesh
-      onClick={() => {
-        synth.triggerAttackRelease(props.note, "16n");
-      }}
       ref={myMesh}
+      onPointerDown={() => {
+        synth.triggerAttack(props.note, "8n");
+      }}
+      onPointerUp={() => {
+        synth.triggerRelease();
+      }}
       whileTap={{
         scale: 1.5,
       }}
       {...props}
     >
       <RoundedBox
-        args={[0.8, 0.8, 0.8]}
+        args={[0.85, 0.85, 0.85]}
         radius={0.05}
         smoothness={4}
         {...myMesh}
