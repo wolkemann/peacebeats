@@ -19,5 +19,6 @@ const Wrapper = styled.section`
 `;
 
 const SceneTitle = styled.h2`
+  text-align: center;
   color: crimson;
 `;
