@@ -1,4 +1,3 @@
-//@ts-nocheck
 import * as THREE from "three";
 import { useRef, useState, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -16,15 +15,16 @@ function Word({ children, ...props }: any) {
   const [hovered, setHovered] = useState(false);
   const over = (e: any) => (e.stopPropagation(), setHovered(true));
   const out = () => setHovered(false);
-
+  // @ts-ignore
   useEffect(() => {
     if (hovered) document.body.style.cursor = "pointer";
     return () => (document.body.style.cursor = "auto");
   }, [hovered]);
   // Tie component to the render-loop
   useFrame(({ camera }) => {
+    // @ts-ignore
     ref.current.quaternion.copy(camera.quaternion);
-
+    // @ts-ignore
     ref.current.material.color.lerp(
       color.set(hovered ? "#fa2720" : "white"),
       0.1
