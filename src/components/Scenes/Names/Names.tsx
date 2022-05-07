@@ -1,10 +1,11 @@
+//@ts-nocheck
 import * as THREE from "three";
 import { useRef, useState, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Text, TrackballControls } from "@react-three/drei";
 import styled from "styled-components";
 
-function Word({ children, ...props }) {
+function Word({ children, ...props }: any) {
   const color = new THREE.Color();
   const fontProps = {
     fontSize: 2.5,
@@ -13,18 +14,17 @@ function Word({ children, ...props }) {
   };
   const ref = useRef();
   const [hovered, setHovered] = useState(false);
-  const over = (e) => (e.stopPropagation(), setHovered(true));
+  const over = (e: any) => (e.stopPropagation(), setHovered(true));
   const out = () => setHovered(false);
-  // Change the mouse cursor on hover
+
   useEffect(() => {
     if (hovered) document.body.style.cursor = "pointer";
     return () => (document.body.style.cursor = "auto");
   }, [hovered]);
   // Tie component to the render-loop
   useFrame(({ camera }) => {
-    // Make text face the camera
     ref.current.quaternion.copy(camera.quaternion);
-    // Animate font color
+
     ref.current.material.color.lerp(
       color.set(hovered ? "#fa2720" : "white"),
       0.1
