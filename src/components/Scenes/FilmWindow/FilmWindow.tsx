@@ -5,22 +5,46 @@ import styled from "styled-components";
 import TonePad from "./TonePad";
 import Slider from "../../Slider/Slider";
 
+const dist = new Tone.BitCrusher(16).toDestination();
 //create a synth and connect it to the main output (your speakers)
-const synth = new Tone.Synth().toDestination();
+const synth = new Tone.Synth().connect(dist);
 
 const firstLineColor = "rgb(97, 251, 255)";
 const secondLineColor = "rgb(204, 0, 204)";
 const thirdLineColor = "rgb(0, 255, 0)";
 
-// export const SceneContext = createContext(synth);
-
 export default function FilmWindow() {
+  function setFilter(e: any) {
+    /* const meter = e.target.value / 10;
+    dist.set({ distortion: meter });
+    console.log(meter); */
+  }
+
   return (
-    <>
+    <Wrapper>
       <FilterWrapper>
-        <Slider id="filter" labelName="Filter 1" />
-        <Slider id="filter" labelName="Filter 1" />
-        <Slider id="filter" labelName="Filter 1" />
+        <Slider
+          id="filter1"
+          labelName="Distortion"
+          min={0}
+          max={10}
+          defaultValue={0}
+          onChange={setFilter}
+        />
+        <Slider
+          id="filter2"
+          labelName="Filter 2"
+          min={0}
+          max={100}
+          defaultValue={0}
+        />
+        <Slider
+          id="filter3"
+          labelName="Filter 3"
+          min={0}
+          max={100}
+          defaultValue={0}
+        />
       </FilterWrapper>
       <PadWrapper>
         <Canvas>
@@ -28,43 +52,43 @@ export default function FilmWindow() {
           <directionalLight color="pink" position={[35, 30, 15]} />
 
           <TonePad
-            position={[-3, 1, 0]}
+            position={[-3, 0.8, 0]}
             color={firstLineColor}
             tone={synth}
             note={"C5"}
           />
           <TonePad
-            position={[-2, 1, 0]}
+            position={[-2, 0.8, 0]}
             color={firstLineColor}
             tone={synth}
             note={"D5"}
           />
           <TonePad
-            position={[-1, 1, 0]}
+            position={[-1, 0.8, 0]}
             color={firstLineColor}
             tone={synth}
             note={"E5"}
           />
           <TonePad
-            position={[0, 1, 0]}
+            position={[0, 0.8, 0]}
             color={firstLineColor}
             tone={synth}
             note={"F5"}
           />
           <TonePad
-            position={[1, 1, 0]}
+            position={[1, 0.8, 0]}
             color={firstLineColor}
             tone={synth}
             note={"G5"}
           />
           <TonePad
-            position={[2, 1, 0]}
+            position={[2, 0.8, 0]}
             color={firstLineColor}
             tone={synth}
             note={"A5"}
           />
           <TonePad
-            position={[3, 1, 0]}
+            position={[3, 0.8, 0]}
             color={firstLineColor}
             tone={synth}
             note={"B5"}
@@ -200,15 +224,19 @@ export default function FilmWindow() {
           />
         </Canvas>
       </PadWrapper>
-    </>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  background-color: black;
+`;
 
 const FilterWrapper = styled.div`
   display: flex;
   flex-flow: column wrap;
   color: white;
-  margin: 1rem;
+  padding: 1rem;
   gap: 0.5rem 1rem;
 `;
 

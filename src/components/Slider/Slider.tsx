@@ -9,9 +9,9 @@ import { SliderLabel } from "../SliderLabel/SliderLabel";
 interface Slider {
   id: string;
   labelName?: string;
-  min?: number;
-  max?: number;
-  defaultValue?: number;
+  min: number;
+  max: number;
+  defaultValue: number;
   onChange?: any;
 }
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Window from "./components/Window/Window";
 import Mixer from "./components/Mixer/Mixer";
 import FilmWindow from "./components/Scenes/FilmWindow/FilmWindow";
+import Names from "./components/Scenes/Names/Names";
 
 function App() {
   const drumMaschine = new Tone.Player({
@@ -28,7 +29,7 @@ function App() {
   return (
     <main>
       <Window>
-        <FilmWindow />
+        <Names />
       </Window>
       <Mixer
         drumMaschine={drumMaschine}

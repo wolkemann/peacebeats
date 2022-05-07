@@ -15,10 +15,10 @@ export default function Window({ children }) {
 const Wrapper = styled.section`
   flex-grow: 3;
   border: 2px solid var(--filmWindowBorderColor);
-  background-color: black;
 `;
 
 const SceneTitle = styled.h2`
   text-align: center;
+  margin: 0;
   color: crimson;
 `;
