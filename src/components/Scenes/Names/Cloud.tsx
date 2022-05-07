@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { useRef, useState, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Text, TrackballControls } from "@react-three/drei";
+import styled from "styled-components";
 import Word from "./Word";
 
 export default function Cloud({ count = 4, radius = 20 }) {
@@ -18,11 +19,15 @@ export default function Cloud({ count = 4, radius = 20 }) {
           new THREE.Vector3().setFromSpherical(
             spherical.set(radius, phiSpan * i, thetaSpan * j)
           ),
-          ["ciccia", "ciccia", "ciccia", "ciccia", "ciccia", "ciccia"],
+          ["myr"],
         ]);
     return temp;
   }, [count, radius]);
-  return words.map(([pos, word], index) => (
-    <Word key={index} position={pos} children={word} />
-  ));
+  return (
+    <>
+      {words.map(([pos, word], index) => (
+        <Word key={index} position={pos} children={word} />
+      ))}
+    </>
+  );
 }
