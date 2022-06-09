@@ -2,6 +2,7 @@ import * as Tone from "tone";
 import styled from "styled-components";
 import Window from "./components/Window/Window";
 import Mixer from "./components/Mixer/Mixer";
+
 import FilmWindow from "./components/Scenes/FilmWindow/FilmWindow";
 import Names from "./components/Scenes/Names/Names";
 
@@ -29,7 +30,7 @@ function App() {
   return (
     <main>
       <Window>
-        <Names />
+        <FilmWindow />
       </Window>
       <Mixer
         drumMaschine={drumMaschine}
